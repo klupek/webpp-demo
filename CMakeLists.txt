@@ -14,7 +14,7 @@ add_definitions(
 )
 
 
-set(AllHeaders src/config.hpp src/pages.hpp src/application.hpp)
+set(AllHeaders src/config.hpp src/pages.hpp src/application.hpp src/entities.hpp)
 
 include_directories(${webpp-demo_SOURCE_DIR}/webpp ${webpp-demo_SOURCE_DIR}/webpp/webpp-common ${webpp-demo_SOURCE_DIR}/webpp/xmlrenderer)
 

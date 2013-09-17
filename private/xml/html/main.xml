@@ -1,4 +1,4 @@
-<html lang="en" xmlns="webpp://html5" xmlns:f="webpp://format">
+<html lang="en" xmlns="webpp://html5" xmlns:f="webpp://format" xmlns:c="webpp://control">
 	<head>
 		<f:title>#{title}</f:title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -6,6 +6,7 @@
 		<meta name="author" f:content="#{author}" />
 		<link href="assets/css/bootstrap.css" rel="stylesheet" />
 		<link href="assets/css/bootstrap-responsive.css" rel="stylesheet" />
+		<link href="assets/css/demo.css" rel="stylesheet" />
 
 		<!--[if lt IE 9]>
 		<script src="assets/js/html5shiv.js"></script>
@@ -30,8 +31,7 @@
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li class="active"><a href="#">Home</a></li>
-							<li><a href="#about">About</a></li>
-							<li><a href="#contact">Contact</a></li>
+							<li c:repeat="outer" c:repeat-array="tags" c:repeat-variable="tag"><f:a f:href="/tag/#{tag.name}">#{tag.name}</f:a></li>
 						</ul>
 					</div><!--/.nav-collapse -->
 				</div>
