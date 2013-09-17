@@ -25,7 +25,7 @@ private:
 	static options_t make_options(int argc, char **argv) {
 		// TODO: parse arguments here
 		return options_t {
-			argc, argv, true, "./xml"
+			argc, argv, true, "../private/xml"
 		};
 	}
 
