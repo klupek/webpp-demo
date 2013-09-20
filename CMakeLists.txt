@@ -1,3 +1,5 @@
+SET(CMAKE_C_COMPILER "clang")
+SET(CMAKE_CXX_COMPILER "clang++")
 project (webpp-demo)
 set (webpp_VERSION_MAJOR 1)
 set (webpp_VERSION_MINOR 0)
@@ -19,10 +21,12 @@ set(AllHeaders src/config.hpp src/pages.hpp src/application.hpp src/entities.hpp
 include_directories(${webpp-demo_SOURCE_DIR}/webpp ${webpp-demo_SOURCE_DIR}/webpp/webpp-common ${webpp-demo_SOURCE_DIR}/webpp/xmlrenderer)
 
 add_executable(demo-cgi src/main_cgi.cpp ${AllHeaders})
+add_executable(demo-fcgi src/main_fcgi.cpp ${AllHeaders})
 
-set(CommonLibs ${Boost_LIBRARIES} webpp-common ${LibXML++_LIBRARIES} ${SociLibs} xmlrenderer cgicc webpp ${pthread_library})
+set(CommonLibs ${Boost_LIBRARIES} webpp-common ${LibXML++_LIBRARIES} ${SociLibs} xmlrenderer cgicc webpp ${pthread_library} fcgi)
 
 target_link_libraries(demo-cgi ${CommonLibs})
+target_link_libraries(demo-fcgi ${CommonLibs})
 
 ENABLE_TESTING()
 
