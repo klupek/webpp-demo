@@ -3,9 +3,10 @@
 
 #include <webpp/context.hpp>
 #include <webpp/controller.hpp>
+#include <webpp/database_context.hpp> //  FIXME: currently database needs to be included before html_page and xmlrenderer, to make render_dbarray work.
 #include <webpp/xmlrenderer_context.hpp>
 #include <webpp/html_page.hpp>
-#include <webpp/database_context.hpp>
+
 
 #include "entities.hpp"
 
@@ -15,9 +16,11 @@ typedef webpp::response response_t;
 class database_session_t : public webpp::database_session {
 public:
 	entities::tags tags;
+	entities::posts posts;
 	database_session_t(const std::string& dburl)
 		: webpp::database_session(dburl)
-		, tags(get_database_session()) {}
+		, tags(get_database_session())
+		, posts(get_database_session()) {}
 
 
 	virtual void test() {
@@ -57,6 +60,7 @@ public:
 		, xml_config_(options.xmllib)
 		, database_(options.database_url) {
 		entities::createdb(database_.get_database_session());
+		entities::filldb(database_.get_database_session());
 	}
 
 	context_t operator()() {

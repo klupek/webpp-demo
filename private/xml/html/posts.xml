@@ -1,0 +1,13 @@
+<div xmlns="webpp://html5" xmlns:f="webpp://format" xmlns:c="webpp://control" class="container">
+	<div id="posts" c:repeat="inner" c:repeat-variable="post" c:repeat-array="posts" class="row">
+		<div class="post row">
+			<div class="row">
+				<f:p class="span9">#{post.content}</f:p>
+			</div>
+			<div class="row">
+				<f:div class="author span3">#{post.author.username}</f:div>
+				<f:div class="author span3 offset6">#{post.created}</f:div>
+			</div>
+		</div>
+	</div>
+</div>

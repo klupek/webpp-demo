@@ -13,14 +13,15 @@ public:
 		render_value("description", "foo");
 		render_value("author", "bar");
 		rewrite_asset_links("assets/", "//assets.localhost/");
-		auto& tags = context().db().tags.all;
-		render_array<webpp::dbarray<decltype(entities::tags::all)>>("tags", tags);
-		//rnd_.get("").debug();
+		render_dbarray("tags", context().db().tags.all);		
 	}
 
 	void index() {
 		base("index!");
+		bind_child("content", "html/posts");
+		render_dbarray("posts", context().db().posts.get_latest, 50);
 		html5(html5_encoding::REMOVE_COMMENTS); // deal with IEs later.
+		//rnd_.get("").debug();
 	}
 
 	template<typename MounterT>
