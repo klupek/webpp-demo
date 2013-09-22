@@ -4,9 +4,23 @@
 			<div class="row">
 				<f:p class="span9">#{post.content}</f:p>
 			</div>
-			<div class="row">
-				<f:div class="author span3">#{post.author.username}</f:div>
-				<f:div class="author span3 offset6">#{post.created}</f:div>
+			<div class="row post-footer">
+				<div class="author span3">
+					<f:a f:href="/users/#{post.author.username}">#{post.author.username}</f:a>
+				</div>				
+
+				<f:div class="author span3 offset6">
+					#{post.created|%Y%m%d %H:%M:%S}
+				</f:div>
+			</div>
+			<hr/>
+			<div class="row" c:repeat="outer" c:repeat-variable="comment" c:repeat-array="post.comments">
+				<div class="offset1 span8">
+					<f:span>#{comment.content}</f:span>
+					--
+					<f:a class="comment-author-link" f:href="/users/#{comment.author.username}">#{comment.author.username}</f:a>
+					<f:span class="comment-created">#{comment.created|%c}</f:span>
+				</div>
 			</div>
 		</div>
 	</div>
