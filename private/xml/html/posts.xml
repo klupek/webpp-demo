@@ -1,25 +1,27 @@
 <div xmlns="webpp://html5" xmlns:f="webpp://format" xmlns:c="webpp://control" class="container">
-	<div id="posts" c:repeat="inner" c:repeat-variable="post" c:repeat-array="posts" class="row">
-		<div class="post row">
+	<div id="posts" c:repeat="inner" c:repeat-variable="post" c:repeat-array="posts">
+		<div class="post">
 			<div class="row">
-				<f:p class="span9">#{post.content}</f:p>
+				<f:p class="col-md-9" f:data-test="#{post.content}">#{post.content}</f:p>
 			</div>
 			<div class="row post-footer">
-				<div class="author span3">
+				<div class="author col-md-3">
 					<f:a f:href="/users/#{post.author.username}">#{post.author.username}</f:a>
 				</div>				
 
-				<f:div class="author span3 offset6">
-					#{post.created|%Y%m%d %H:%M:%S}
+				<f:div class="author col-md-3 offset6">
+					#{post.created}
+                    <!-- |%Y%m%d %H:%M:%S -->
 				</f:div>
 			</div>
 			<hr/>
 			<div class="row" c:repeat="outer" c:repeat-variable="comment" c:repeat-array="post.comments">
-				<div class="offset1 span8">
+				<div class="col-md-offset-1 col-md-3">
 					<f:span>#{comment.content}</f:span>
 					--
 					<f:a class="comment-author-link" f:href="/users/#{comment.author.username}">#{comment.author.username}</f:a>
-					<f:span class="comment-created">#{comment.created|%c}</f:span>
+					<f:span class="comment-created">#{comment.created}</f:span>
+                    <!-- |%c -->
 				</div>
 			</div>
 		</div>

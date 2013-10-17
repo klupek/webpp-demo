@@ -21,7 +21,7 @@ public:
 		bind_child("content", "html/posts");
 		render_dbarray("posts", context().db().posts.get_latest2, 50);
 		html5(html5_encoding::REMOVE_COMMENTS); // deal with IEs later.
-		getRenderContext().get("").debug();
+		//getRenderContext().get("").debug();
 	}
 
 	template<typename MounterT>

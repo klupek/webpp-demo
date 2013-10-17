@@ -59,8 +59,9 @@ public:
 		, basic_config_ { options.debugging }
 		, xml_config_(options.xmllib)
 		, database_(options.database_url) {
+		xml_config_.attach_xslt("bootstrap-form");
 		entities::createdb(database_.get_database_session());
-		entities::filldb(database_.get_database_session());
+		entities::filldb(database_.get_database_session());			
 	}
 
 	context_t operator()() {
